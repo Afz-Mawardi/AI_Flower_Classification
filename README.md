@@ -89,7 +89,7 @@ python app.py
 
 ## Konfigurasi & Batasan
 
-- Maks ukuran upload: **16 MB** (`MAX_CONTENT_LENGTH`).
+- Maks ukuran upload: **10 MB** (`MAX_CONTENT_LENGTH`).
 - Ekstensi yang diizinkan: `png`, `jpg`, `jpeg`, `bmp`.
 - File model dan metadata dibaca dari folder `models/`.
 - Mapping kelas:
