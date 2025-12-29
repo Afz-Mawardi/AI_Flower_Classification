@@ -2,6 +2,20 @@
 
 Aplikasi web untuk mengklasifikasikan jenis bunga dari gambar (upload file atau kamera), menampilkan confidence, serta menampilkan metadata/penjelasan bunga.
 
+---
+
+## Daftar Isi
+
+- [Highlights](#highlights)
+- [Tech Stack](#tech-stack)
+- [Struktur Project](#struktur-project)
+- [Requirements](#requirements)
+- [Quickstart](#quickstart)
+- [Konfigurasi & Batasan](#konfigurasi--batasan)
+- [API Ringkas](#api-ringkas)
+- [Production Notes](#production-notes)
+- [License](#license)
+
 ## Highlights
 
 - **Web UI** (HTML templates) untuk beranda, klasifikasi, dan pencarian.
@@ -12,11 +26,15 @@ Aplikasi web untuk mengklasifikasikan jenis bunga dari gambar (upload file atau 
 - **Model inference** menggunakan TensorFlow/Keras (`.keras`) dan utilitas prediksi di `models/model_utils.py`.
 - **Validasi kualitas gambar** (brightness & blur) untuk mengurangi prediksi pada gambar yang tidak layak.
 
+---
+
 ## Tech Stack
 
 - Backend: **Flask**
 - ML Inference: **TensorFlow** (memuat model Keras)
 - Image processing: **Pillow**, **OpenCV**, **NumPy**
+
+---
 
 ## Struktur Project
 
@@ -30,10 +48,14 @@ Aplikasi web untuk mengklasifikasikan jenis bunga dari gambar (upload file atau 
 - `templates/` — halaman UI (Jinja2): `index.html`, `clasify.html`, `search.html`.
 - `static/` — asset front-end: `style.css`, `script.js`.
 
+---
+
 ## Requirements
 
 - Python: **3.10+** (pastikan kompatibel dengan versi TensorFlow yang di-install di OS kamu)
 - Dependensi Python: lihat `requirements.txt`
+
+---
 
 ## Quickstart
 
@@ -63,6 +85,8 @@ python app.py
 - Klasifikasi: `http://localhost:5000/clasify`
 - Search: `http://localhost:5000/search`
 
+---
+
 ## Konfigurasi & Batasan
 
 - Maks ukuran upload: **16 MB** (`MAX_CONTENT_LENGTH`).
@@ -73,6 +97,8 @@ python app.py
   - Fallback: folder dataset `../dataset/train` (jika tersedia).
   - Fallback terakhir: urutan key dari `models/cat_to_name.json`.
 
+---
+
 ## API Ringkas
 
 - `POST /upload` (multipart/form-data): field `file`
@@ -81,10 +107,14 @@ python app.py
 
 Detail lengkap request/response dan contoh curl ada di `USAGE.md`.
 
+---
+
 ## Production Notes
 
 - Jangan jalankan dengan `debug=True` di production.
 - Untuk deployment, jalankan via WSGI server pilihan Anda (mis. gunicorn/waitress) dan atur reverse proxy (Nginx/IIS) sesuai kebutuhan.
+
+---
 
 ## License
 
