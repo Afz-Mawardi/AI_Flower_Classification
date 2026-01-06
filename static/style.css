@@ -655,7 +655,7 @@ box-shadow:
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #10b981, #19d6c0, #20ffe5);
+  background: linear-gradient(150deg, #10b981, #19d6c0, #20ffe5);
   color: var(--bg-primary);
   border: 1px solid var(--glass-border);
 }
@@ -2916,4 +2916,5 @@ box-shadow:
     font-size: 0.875rem;
   }
 }
+
 
