@@ -525,12 +525,6 @@ box-shadow:
   animation: gentle-tilt 5s ease-in-out infinite;
 }
 
-@media (max-width: 640px) {
-  .hero-logo-icon {
-    font-size: clamp(3.5rem, 10vw, 5rem);
-  }
-}
-
 .hero-logo-caption {
   text-align: center;
   z-index: 1;
@@ -655,9 +649,9 @@ box-shadow:
 }
 
 .btn-primary {
-  background: linear-gradient(150deg, #10b981, #19d6c0, #20ffe5);
+  background: linear-gradient(135deg, #10b981, #19d6c0, #20ffe5);
   color: var(--bg-primary);
-  border: 1px solid var(--glass-border);
+  border: 1px solid var(--glass-shadow);
 }
 
 .btn-secondary {
@@ -668,8 +662,9 @@ box-shadow:
 }
 
 .btn-success {
-  background: linear-gradient(135deg, #3b57f6, #2563eb);
+  background: radial-gradient(circle at center, #304add, #3650e4, #2360e2);
   color: var(--text-primary);
+  border: 1px solid var(--glass-shadow);
 }
 
 .btn-light {
@@ -1295,7 +1290,8 @@ box-shadow:
 }
 
 .camera-placeholder {
-  padding: 90px;
+  border: 2px solid var(--glass-border);
+  padding: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1673,7 +1669,7 @@ box-shadow:
   text-align: center;
   background: rgba(10, 14, 39, 0.8);
   border-bottom: 1px solid var(--glass-border);
-  display: block;   
+  display: block;
 }
 
 .footer-brand {
@@ -2447,6 +2443,16 @@ box-shadow:
     height: 70px;
     font-size: 2rem;
   }
+
+  .camera-placeholder-content .camera-icon {
+    width: 70px;
+    height: 70px;
+}
+
+  .camera-placeholder-content .camera-icon i {
+    font-size: 2rem;
+}
+
 }
 
 /* Tablet Portrait (768px and below) */
@@ -2485,8 +2491,11 @@ box-shadow:
     width: 100%;
   }
 
-  /* Upload Zone */
   .upload-zone {
+    padding: var(--spacing-xl);
+  }
+
+  .camera-placeholder {
     padding: var(--spacing-xl);
   }
 
@@ -2496,10 +2505,22 @@ box-shadow:
     font-size: 1.75rem;
   }
 
+  .camera-placeholder-content .camera-icon {
+    width: 60px;
+    height: 60px;
+}
+
+  .camera-placeholder-content .camera-icon i {
+    font-size: 1.75rem;
+}
+
   .upload-content h4 {
     font-size: 1.125rem;
   }
 
+.camera-placeholder-content h4 {
+    font-size: 1.125rem;
+}
   /* Hero Section */
   .hero-content h1 {
     font-size: 2.5rem;
@@ -2687,8 +2708,11 @@ box-shadow:
     font-size: 0.8125rem;
   }
 
-  /* Upload Zone */
   .upload-zone {
+    padding: var(--spacing-lg);
+  }
+
+  .camera-placeholder {
     padding: var(--spacing-lg);
   }
 
@@ -2699,13 +2723,31 @@ box-shadow:
     margin-bottom: var(--spacing-sm);
   }
 
+  .camera-placeholder-content .camera-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: var(--spacing-sm);
+}
+
+  .camera-placeholder-content .camera-icon i {
+    font-size: 1.5rem;
+}
+
   .upload-content h4 {
     font-size: 1rem;
   }
 
+.camera-placeholder-content h4 {
+    font-size: 1rem;
+}
+
   .upload-content p {
     font-size: 0.875rem;
   }
+
+.camera-placeholder-content p {
+    font-size: 0.875rem;
+}
 
   .upload-info {
     font-size: 0.75rem;
@@ -2916,5 +2958,3 @@ box-shadow:
     font-size: 0.875rem;
   }
 }
-
-
