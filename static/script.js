@@ -196,8 +196,107 @@ function toggleMobileMenu() {
 }
 
 // ========== THEME TOGGLE ==========
+// Apply theme immediately to prevent flash
+(function() {
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+    
+    // Update icon immediately if element exists
+    const updateIcon = () => {
+        const icon = document.querySelector('.theme-toggle i');
+        if (icon) {
+            if (theme === 'light') {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            } else {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        }
+    };
+    
+    // Try to update icon immediately, or wait for DOM
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', updateIcon);
+    } else {
+        updateIcon();
+    }
+})();
+
+function initializeTheme() {
+    // Check for saved theme preference or default to system preference
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+    
+    // Apply theme (already applied in IIFE, but ensure icon is updated)
+    setTheme(theme, false);
+    
+    // Listen for system theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (!localStorage.getItem('theme')) {
+            setTheme(e.matches ? 'dark' : 'light', true);
+        }
+    });
+}
+
 function toggleTheme() {
-    showToast('Fitur tema segera hadir!', 'info');
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme, true);
+}
+
+function setTheme(theme, animate = true) {
+    const root = document.documentElement;
+    const themeToggleBtn = document.querySelector('.theme-toggle');
+    const icon = themeToggleBtn?.querySelector('i');
+    
+    // Add transition class for smooth theme change
+    if (animate) {
+        root.classList.add('theme-transitioning');
+    }
+    
+    // Set theme attribute
+    root.setAttribute('data-theme', theme);
+    
+    // Save to localStorage
+    localStorage.setItem('theme', theme);
+    
+    // Update icon with animation
+    if (icon) {
+        if (animate) {
+            // Add rotation animation
+            icon.style.transform = 'rotate(360deg)';
+            setTimeout(() => {
+                icon.style.transform = 'rotate(0deg)';
+            }, 400);
+        }
+        
+        // Update icon class
+        if (theme === 'light') {
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+        } else {
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        }
+    }
+    
+    // Remove transition class after animation
+    if (animate) {
+        setTimeout(() => {
+            root.classList.remove('theme-transitioning');
+        }, 300);
+    }
+}
+
+// Initialize theme on page load
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeTheme);
+} else {
+    initializeTheme();
 }
 
 // ========== UPLOAD FUNCTIONALITY ==========
