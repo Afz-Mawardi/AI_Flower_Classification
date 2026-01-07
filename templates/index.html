@@ -4,6 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <script>
+        // Apply theme immediately before page renders
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
     <title>AI Flower Classifier -Beranda</title>
     <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/png">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
@@ -48,7 +58,7 @@
             <div class="hero-content">
                 <div class="hero-badge">
                     <i class="fas fa-sparkles"></i>
-                    <span>Teknologi AI Terdepan</span>
+                    <span>Teknologi AI Canggih</span>
                 </div>
                 <h1 class="hero-title">Identifikasi Bunga dengan<br><span class="gradient-text">Kecerdasan Buatan</span>
                 </h1>
@@ -72,7 +82,6 @@
             <div class="hero-visual">
                 <div class="hero-logo-card">
                     <div class="hero-logo-surface">
-                        <div class="hero-logo-shine"></div>
                         <i class="fas fa-spa hero-logo-icon" aria-label="AI Flower Logo"></i>
                     </div>
                     <div class="hero-logo-caption">
