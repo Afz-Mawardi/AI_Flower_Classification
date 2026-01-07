@@ -1,21 +1,21 @@
-# Panduan Pemakaian — Flower AI
+# 🌸 Panduan Pemakaian — Flower AI
 
 Dokumen ini menjelaskan cara memakai aplikasi (UI dan API), termasuk format request/response dan troubleshooting.
 
 ---
 
-## Daftar Isi
+## 📋 Daftar Isi
 
-- [Menjalankan Aplikasi (Local)](#menjalankan-aplikasi-local)
-- [Menggunakan Web UI](#menggunakan-web-ui)
-- [Menggunakan API](#menggunakan-api)
-- [File Model & Metadata](#file-model--metadata)
-- [Troubleshooting](#troubleshooting)
-- [Catatan Keamanan](#catatan-keamanan)
+- [🚀 Menjalankan Aplikasi (Local)](#-menjalankan-aplikasi-local)
+- [🌐 Menggunakan Web UI](#-menggunakan-web-ui)
+- [🔌 Menggunakan API](#-menggunakan-api)
+- [📁 File Model & Metadata](#-file-model--metadata)
+- [🔧 Troubleshooting](#-troubleshooting)
+- [🔒 Catatan Keamanan](#-catatan-keamanan)
 
-## Menjalankan Aplikasi (Local)
+## 🚀 Menjalankan Aplikasi (Local)
 
-### 1) Setup environment
+### 1) 🏗️ Setup environment
 
 ```bash
 python -m venv .venv
@@ -23,13 +23,13 @@ python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 ```
 
-### 2) Install dependency
+### 2) 📥 Install dependency
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3) Start server
+### 3) ▶️ Start server
 
 ```bash
 python app.py
@@ -39,24 +39,24 @@ Server berjalan di `http://localhost:5000`.
 
 ---
 
-## Menggunakan Web UI
+## 🌐 Menggunakan Web UI
 
 Aplikasi menyediakan beberapa halaman:
 
-- **Beranda**: `GET /` atau `GET /beranda`
-- **Klasifikasi**: `GET /clasify`
+- **🏠 Beranda**: `GET /` atau `GET /beranda`
+- **🔍 Klasifikasi**: `GET /clasify`
   - Umumnya berisi fitur upload gambar dan/atau kamera (tergantung implementasi front-end).
-- **Pencarian metadata**: `GET /search`
+- **🔎 Pencarian metadata**: `GET /search`
 
 Jika UI tidak menampilkan hasil, buka DevTools browser dan cek response API (lihat bagian API).
 
 ---
 
-## Menggunakan API
+## 🔌 Menggunakan API
 
 Semua response API menggunakan JSON dan biasanya mengembalikan key `success`.
 
-### 1) Upload gambar dari file
+### 1) 📤 Upload gambar dari file
 
 **Endpoint**: `POST /upload`
 
@@ -111,12 +111,11 @@ curl -X POST http://localhost:5000/upload \
 { "success": false, "error": "..." }
 ```
 
-Catatan:
-- Batas ukuran upload dikonfigurasi di server (16MB).
+*Catatan: Batas ukuran upload dikonfigurasi di server (10MB).*
 
 ---
 
-### 2) Capture dari kamera (base64)
+### 2) 📷 Capture dari kamera (base64)
 
 **Endpoint**: `POST /capture`
 
@@ -140,7 +139,7 @@ Response mirip dengan `/upload`, namun `mode` bernilai `camera`.
 
 ---
 
-### 3) Search metadata bunga
+### 3) 🔍 Search metadata bunga
 
 **Endpoint**: `POST /api/search`
 
@@ -187,29 +186,31 @@ curl -X POST http://localhost:5000/api/search \
 
 ---
 
-## File Model & Metadata
+## 📁 File Model & Metadata
 
 Aplikasi membaca file berikut di `models/`:
 
-- `flower_classification_model_MobileNetV2.keras` — model inference.
-- `flower_metadata.json` — metadata untuk tiap kelas.
-- `cat_to_name.json` — mapping nama bunga.
-- `class_indices.json` — mapping index output model ke label class (disarankan ada).
+- `flower_classification_model_MobileNetV2.keras` — 🧠 model inference.
+- `flower_metadata.json` — 📖 metadata untuk tiap kelas.
+- `cat_to_name.json` — 🏷️ mapping nama bunga.
+- `class_indices.json` — 🔢 mapping index output model ke label class (disarankan ada).
 
 Jika `class_indices.json` tidak ada, server mencoba membuat mapping dari folder `../dataset/train` (jika ada), atau dari key `cat_to_name.json`.
 
 ---
 
-## Troubleshooting
+## 🔧 Troubleshooting
 
-- **Error saat install TensorFlow**: pastikan versi Python Anda kompatibel dengan TensorFlow yang dipilih. Jika perlu, gunakan Python versi yang umum kompatibel (seringnya 3.10/3.11) dan upgrade `pip`.
-- **`cv2` tidak ditemukan**: pastikan `opencv-python` ter-install dari `requirements.txt`.
-- **Prediksi selalu "Unknown" / confidence 0**: cek `quality_info` pada response; bisa jadi gambar terlalu gelap/terang/blur.
-- **Model tidak terbaca**: pastikan file `models/flower_classification_model_MobileNetV2.keras` ada dan path relatif tidak berubah.
+| Masalah | Penyebab & Solusi |
+|---------|-------------------|
+| **Error saat install TensorFlow** | Pastikan versi Python Anda kompatibel dengan TensorFlow yang dipilih. Jika perlu, gunakan Python versi yang umum kompatibel (seringnya 3.10/3.11) dan upgrade `pip`. |
+| **`cv2` tidak ditemukan** | Pastikan `opencv-python` ter-install dari `requirements.txt`. |
+| **Prediksi selalu "Unknown" / confidence 0** | Cek `quality_info` pada response; bisa jadi gambar terlalu gelap/terang/blur. |
+| **Model tidak terbaca** | Pastikan file `models/flower_classification_model_MobileNetV2.keras` ada dan path relatif tidak berubah. |
 
 ---
 
-## Catatan Keamanan
+## 🔒 Catatan Keamanan
 
-- Jangan aktifkan `debug=True` saat di-deploy.
-- Batasi ukuran upload dan pertimbangkan validasi tambahan jika aplikasi diakses publik.
+- **🚫 Jangan aktifkan `debug=True` saat di-deploy.**
+- **🛡️ Batasi ukuran upload dan pertimbangkan validasi tambahan jika aplikasi diakses publik.**
