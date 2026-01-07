@@ -299,8 +299,8 @@ function displayFilePreview(file) {
                             <p class="preview-filesize">${(file.size / 1024 / 1024).toFixed(2)} MB</p>
                         </div>
                     </div>
-                    <button class="btn btn-secondary preview-change-btn" onclick="resetUploadZone()">
-                        <i class="fas fa-times"></i> <span>Ganti</span>
+                    <button class="btn btn-secondary preview-change-btn" onclick="resetUploadZone(event)">
+                        <i class="fas fa-times"></i> <span>Batal</span>
                     </button>
                 </div>
             </div>
@@ -319,7 +319,13 @@ function displayFilePreview(file) {
     reader.readAsDataURL(file);
 }
 
-function resetUploadZone() {
+function resetUploadZone(event) {
+    // Prevent event propagation to avoid triggering parent click handlers
+    if (event) {
+        event.stopPropagation();
+        event.preventDefault();
+    }
+    
     const uploadZone = document.getElementById('uploadZone');
     const fileInput = document.getElementById('fileInput');
     
@@ -355,9 +361,11 @@ function resetUploadZone() {
         </div>
     `;
     
-    // Reset initialization flag and reinitialize
+    // Reset initialization flag and reinitialize after a small delay
     uploadZoneInitialized = false;
-    initializeUploadZone();
+    setTimeout(() => {
+        initializeUploadZone();
+    }, 100);
 }
 
 async function uploadFile() {
@@ -365,7 +373,7 @@ async function uploadFile() {
     const file = fileInput.files[0];
     
     if (!file) {
-        showToast('Silakan pilih gambar terlebih dahulu', 'error');
+        showToast('Silakan pilih gambar terlebih dahulu', 'warning');
         return;
     }
     
