@@ -87,10 +87,6 @@ Struktur direktori:
 - sample_submission.csv
 ```
 
-Visualisasi:
-
-- Kategori dapat divisualisasikan menggunakan deskriptor bentuk (contoh: SIFT) dan warna (HSV) untuk melihat sebaran bentuk dan warna antar kelas.
-
 ---
 
 ## 📋 Requirements
@@ -171,3 +167,4 @@ Lihat file [`LICENSE`](LICENSE) untuk detail lebih lanjut.
 ## 🎉 Project Completed!
 
 Proyek **Flower AI** telah berhasil diselesaikan dengan fitur lengkap untuk klasifikasi bunga menggunakan AI. Terima kasih telah menggunakan aplikasi ini! 🌸
+
