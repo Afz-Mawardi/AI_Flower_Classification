@@ -47,23 +47,26 @@
 
 ```
 flower_ai/
-├── app.py                          # 🚀 Aplikasi Flask utama, routing, load model, load metadata, API
-├── models/                         # 📊 Folder model dan data
+├── app.py                         # 🚀 Aplikasi Flask utama, routing + API
+├── models/                        # 📊 Folder model dan data
 │   ├── flower_classification_model_MobileNetV2.keras  # 🧠 Model terlatih
 │   ├── model_utils.py              # ⚙️ Fungsi prediksi + quality check
 │   ├── cat_to_name.json            # 🏷️ Mapping kelas -> nama bunga
 │   ├── class_indices.json          # 🔢 Mapping index model -> label folder
 │   └── flower_metadata.json        # 📖 Metadata lengkap (nama ilmiah, habitat, dll)
-├── templates/                      # 🎨 Halaman UI (Jinja2)
+├── templates/                     # 🎨 Halaman UI (Jinja2)
 │   ├── index.html                  # 🏠 Beranda
 │   ├── clasify.html                # 🔍 Klasifikasi
 │   └── search.html                 # 🔎 Pencarian
-├── static/                         # 🎯 Asset front-end
+├── static/                        # 🎯 Static assets
+│   ├── ss_home.png                 # 🖼️ Screenshot Home
+│   ├── favicon.png                 # 🖼️ Favicon
 │   ├── style.css                   # 🎨 Styling
 │   └── script.js                   # ⚡ JavaScript
-├── requirements.txt                # 📦 Dependensi Python
-├── README.md                       # 📚 Dokumentasi utama
-└── USAGE.md                        # 📖 Panduan penggunaan
+├── requirements.txt               # 📦 Dependensi Python
+├── LICENSE                        # 📄 Lisensi (MIT)
+├── README.md                      # 📚 Dokumentasi utama
+└── USAGE.md                       # 📖 Panduan penggunaan
 ```
 
 ---
@@ -167,4 +170,3 @@ Lihat file [`LICENSE`](LICENSE) untuk detail lebih lanjut.
 ## 🎉 Project Completed!
 
 Proyek **Flower AI** telah berhasil diselesaikan dengan fitur lengkap untuk klasifikasi bunga menggunakan AI. Terima kasih telah menggunakan aplikasi ini! 🌸
-
