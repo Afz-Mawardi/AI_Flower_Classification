@@ -49,7 +49,7 @@
 flower_ai/
 ├── app.py                         # 🚀 Aplikasi Flask utama, routing + API
 ├── models/                        # 📊 Folder model dan data
-│   ├── flower_classification_model_MobileNetV2.keras  # 🧠 Model terlatih
+│   ├── flower_classification_model_MobileNetV2.keras          # 🧠 Model terlatih
 │   ├── model_utils.py              # ⚙️ Fungsi prediksi + quality check
 │   ├── cat_to_name.json            # 🏷️ Mapping kelas -> nama bunga
 │   ├── class_indices.json          # 🔢 Mapping index model -> label folder
@@ -156,7 +156,7 @@ Ikuti langkah-langkah berikut untuk menjalankan aplikasi dengan cepat:
 - **🚫 Jangan jalankan dengan `debug=True` di production** untuk alasan keamanan.
 - **🚀 Untuk deployment**, jalankan via WSGI server pilihan Anda (mis. gunicorn/waitress) dan atur reverse proxy (Nginx/IIS) sesuai kebutuhan.
 
-- **🌍 Demo (Deployment)**: https://sanproz.up.railway.app/
+- **🌍 Demo (Deployment)**: [sanproz.up.railway.app](https://sanproz.up.railway.app/)
 
 ---
 
