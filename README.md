@@ -1,7 +1,10 @@
-# 🌺 Flower AI — Klasifikasi Jenis Bunga (Flask + TensorFlow)
+# 🌺 AI Flower Classifier - Klasifikasi Jenis Bunga (Flask + TensorFlow)
 
 [![Project Status](https://img.shields.io/badge/Status-Completed%20✅-brightgreen)](https://github.com/your-repo)  
+
 *Aplikasi web canggih untuk mengklasifikasikan jenis bunga dari gambar (upload file atau kamera), menampilkan confidence, serta menampilkan metadata/penjelasan bunga yang detail dan informatif.*
+
+![Tampilan Aplikasi — Beranda](static/ss_home.png)
 
 ---
 
@@ -10,6 +13,7 @@
 - [🎯 Highlights](#-highlights)
 - [🛠️ Tech Stack](#️-tech-stack)
 - [📂 Struktur Project](#-struktur-project)
+- [📦 Dataset](#-dataset)
 - [📋 Requirements](#-requirements)
 - [🚀 Quickstart](#-quickstart)
 - [⚙️ Konfigurasi & Batasan](#️-konfigurasi--batasan)
@@ -61,6 +65,31 @@ flower_ai/
 ├── README.md                       # 📚 Dokumentasi utama
 └── USAGE.md                        # 📖 Panduan penggunaan
 ```
+
+---
+
+## 📦 Dataset
+Dataset sumber: Kaggle - [Oxford 102 Flower Dataset](https://www.kaggle.com/datasets/nunenuh/pytorch-challange-flower-dataset)
+
+Ringkasan singkat:
+
+- Dataset berisi 102 kategori bunga (setiap kelas berkisar 40–258 gambar) dengan variasi besar pada skala, pose, dan pencahayaan. Beberapa kategori sangat mirip sehingga menantang untuk klasifikasi.
+
+Struktur direktori:
+
+```
+> dataset
+	> train
+	> valid
+	> test
+- cat_to_name.json
+- README.md
+- sample_submission.csv
+```
+
+Visualisasi:
+
+- Kategori dapat divisualisasikan menggunakan deskriptor bentuk (contoh: SIFT) dan warna (HSV) untuk melihat sebaran bentuk dan warna antar kelas.
 
 ---
 
@@ -127,6 +156,8 @@ Ikuti langkah-langkah berikut untuk menjalankan aplikasi dengan cepat:
 
 - **🚫 Jangan jalankan dengan `debug=True` di production** untuk alasan keamanan.
 - **🚀 Untuk deployment**, jalankan via WSGI server pilihan Anda (mis. gunicorn/waitress) dan atur reverse proxy (Nginx/IIS) sesuai kebutuhan.
+
+- **🌍 Demo (Deployment)**: https://sanproz.up.railway.app/
 
 ---
 
