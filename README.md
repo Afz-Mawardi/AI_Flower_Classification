@@ -156,7 +156,7 @@ Ikuti langkah-langkah berikut untuk menjalankan aplikasi dengan cepat:
 - **🚫 Jangan jalankan dengan `debug=True` di production** untuk alasan keamanan.
 - **🚀 Untuk deployment**, jalankan via WSGI server pilihan Anda (mis. gunicorn/waitress) dan atur reverse proxy (Nginx/IIS) sesuai kebutuhan.
 
-- **🌍 Demo (Deployment)**: [sanproz.up.railway.app](https://sanproz.up.railway.app/)
+- **🌍 Demo (Deployment)**: [sanproz.up.railway.app](https://sanproz.up.railway.app/) - web expiry date: 28 01 2026
 
 ---
 
@@ -170,3 +170,4 @@ Lihat file [`LICENSE`](LICENSE) untuk detail lebih lanjut.
 ## 🎉 Project Completed!
 
 Proyek **Flower AI** telah berhasil diselesaikan dengan fitur lengkap untuk klasifikasi bunga menggunakan AI. Terima kasih telah menggunakan aplikasi ini! 🌸
+
